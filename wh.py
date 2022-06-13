@@ -7,6 +7,7 @@ options.add_argument("--start-maximized")
 options.add_argument("--incognito")
 options.add_argument("--disable-popup-blocking ")
 
+
 driver = webdriver.Chrome(options = options)
 nd = webdriver.Chrome(options = options)
 url = "https://www.accuweather.com/zh/tw/taiwan-weather"
