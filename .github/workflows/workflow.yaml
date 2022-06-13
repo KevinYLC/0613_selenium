@@ -1,0 +1,22 @@
+name: test
+on:
+  push:
+    branches:
+    - 'master'
+    schedule:
+    - cron:  '0 16 * * *'
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v3
+    - name: install
+      run: |
+        sudo dpkg -i chrome.deb
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: python test
+      run: |
+        python3 wh.py > log.txt 2>&1 &
