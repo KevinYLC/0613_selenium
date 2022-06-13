@@ -13,6 +13,7 @@ nd = webdriver.Chrome(options = options)
 url = "https://www.accuweather.com/zh/tw/taiwan-weather"
 driver.get(url)
 time.sleep(1)
+
 for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/div/a"):
     msg = ""  
     if i.find_element_by_class_name("text.title.no-wrap").text[2:] in ["市","縣"]:
