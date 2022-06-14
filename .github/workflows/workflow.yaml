@@ -16,8 +16,11 @@ jobs:
       run: |
         pwd 
         ls -al
-        sudo dpkg -i chrome.deb
+
+        wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo apt-get install -f
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: python test
