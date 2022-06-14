@@ -22,7 +22,7 @@ nd = webdriver.Chrome(options = options)
 url = "https://www.accuweather.com/zh/tw/taiwan-weather"
 driver.get(url)
 time.sleep(5)
-doc_ref = db.collection("test").document("key")
+doc_ref = db.collection("test").document("whe")
 msg = ""
 for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/div/a"):
     if i.find_element_by_class_name("text.title.no-wrap").text[2:] in ["市","縣"]:
@@ -40,5 +40,6 @@ for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/
                 time.sleep(0.2)
             for a , b , c in zip(k.find_elements_by_xpath("//*/div[1]/div/div[1]/h2/span") , k.find_elements_by_class_name("phrase") ,k.find_elements_by_class_name("temp.metric")):
                 msg += f"{a.text} : {b.text} {c.text} \n"
+code = zlib.compress(str(msg).encode("utf-8"))
 doc_ref.update({str(today.date()) : msg})
 quit()
