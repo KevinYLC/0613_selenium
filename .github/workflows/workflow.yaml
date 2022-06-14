@@ -23,4 +23,4 @@ jobs:
         pip install -r requirements.txt
     - name: python test
       run: |
-        python3 wh.py
+        python3 wh2.py
