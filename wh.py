@@ -4,15 +4,16 @@ from selenium.webdriver.chrome.options import Options
 
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
-options.add_argument("--incognito")
+options.add_argument("--headless")#incognito headless
 options.add_argument("--disable-popup-blocking ")
-
+# options.add_argument('--window-size=1920,1080')
+options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36")
 
 driver = webdriver.Chrome(options = options)
-nd = webdriver.Chrome(options = options)
+nd = webdriver.Chrome(options = options) 
 url = "https://www.accuweather.com/zh/tw/taiwan-weather"
 driver.get(url)
-time.sleep(1)
+time.sleep(5)
 
 for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/div/a"):
     msg = ""  
@@ -32,3 +33,4 @@ for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/
             for a , b , c in zip(k.find_elements_by_xpath("//*/div[1]/div/div[1]/h2/span") , k.find_elements_by_class_name("phrase") ,k.find_elements_by_class_name("temp.metric")):
                 msg += f"{a.text} : {b.text} {c.text} \n"
         print(msg)
+quit()
