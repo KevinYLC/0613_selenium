@@ -41,5 +41,5 @@ for i in driver.find_elements_by_xpath("/html/body/div/div[4]/div[1]/div/div[2]/
             for a , b , c in zip(k.find_elements_by_xpath("//*/div[1]/div/div[1]/h2/span") , k.find_elements_by_class_name("phrase") ,k.find_elements_by_class_name("temp.metric")):
                 msg += f"{a.text} : {b.text} {c.text} \n"
 code = zlib.compress(str(msg).encode("utf-8"))
-doc_ref.update({str(today.date()) : msg})
+doc_ref.update({str(today.date()) : code})
 quit()
